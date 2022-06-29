@@ -1,15 +1,18 @@
 import './App.css';
 
-function App() {
+import Game from './Components/Game';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <div className="title">
+          <h1>Tic Tac Toe</h1>
+        </div>
+        <Game />
+      </div>
+    </>
   );
-}
+};
 
 export default App;
