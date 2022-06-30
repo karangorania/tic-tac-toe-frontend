@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Square.module.css';
 
+//data will be pass through the props
+
 const Square = (props) => {
   return (
     <div>
