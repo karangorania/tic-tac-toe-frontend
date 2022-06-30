@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Tic-Tac-Toe Game with Time Travel
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple Tic-Tac-Toe game made with React Js. In this game you can also Time Travel from to any place were you have creates the move on game board.
+We have use React Hooks
 
-## Available Scripts
+## 🔗 Live Demo
 
-In the project directory, you can run:
+[Click Here ](https://tic-tac-toe-frontend-chi.vercel.app/)
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Server:** React Js, React Hooks, Functional Components
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## NPM Packages
 
-### `npm test`
+- [React Js](https://www.npmjs.com/package/react)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+  git clone https://github.com/karangorania/tic-tac-toe-frontend
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Go to the project directory
 
-### `npm run eject`
+```bash
+  cd tic-tac-toe-frontend
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Install dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+  npm i
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Start the server
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+  npm start
+```
 
-## Learn More
+Open Localhost in your Browser
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+http://localhost:3000/
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## How it’s made
 
-### Code Splitting
+First of all I created three file in Components folder.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `Square.js`
+- `Board.js`
+- `Game.js`
 
-### Analyzing the Bundle Size
+In `Square.js` I created the button which will work as square of the game board. I will pass the value using props using other file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+In `Board.js` I created printSquare function which it will take square from square file & I will put into div 9 times so, prefect square will made.
 
-### Making a Progressive Web App
+In `Game.js` is main file will hold all logic of the game.
+First I have created empty array of 9.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+`const boardStart = ['', '', '', '', '', '', '', '', ''];`
 
-### Advanced Configuration
+Then I have created 2 useState one History & second currentIndex.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Winning Condition
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    [0, 1, 2], //horizontal
+    [3, 4, 5], //horizontal
+    [6, 7, 8], //horizontal
+    [0, 3, 6], //vertical
+    [1, 4, 7], //vertical
+    [2, 5, 8], //vertical
+    [0, 4, 8], //cross
+    [2, 4, 6], // cross

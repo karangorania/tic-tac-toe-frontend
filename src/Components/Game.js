@@ -10,6 +10,11 @@ const Game = () => {
   ]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // slice will return copy array in array object
+  // if statement will not allow for multiple input at same square
+  // nextTurn variable will allow which turn is there
+  // handleClick will pass data to square using props
+
   const handleClick = (i) => {
     const board = history[currentIndex].board.slice();
     if (board[i] || checkWinner(board)) {
@@ -23,16 +28,18 @@ const Game = () => {
   };
 
   const winner = checkWinner(history[currentIndex].board);
-  const draw = checkDraw(history[currentIndex].board);
+  // const draw = checkDraw(history[currentIndex].board);
+
+  // status will print what is the status of the game who is winner X or O
 
   let status;
   if (winner) {
     status = winner + ': is winner ';
-  } else if (draw) {
-    status = draw + ': Game is draw!';
   } else {
     status = history[currentIndex].nextTurn + ': Turn';
   }
+
+  // goBack function will help to goBack in Time Travel
 
   const goBack = (index) => {
     setCurrentIndex(index);
@@ -40,7 +47,7 @@ const Game = () => {
 
   return (
     <div className={classes.gameInfo}>
-      <div className="game-board">
+      <div>
         <Board board={history[currentIndex].board} handleClick={handleClick} />
       </div>
       <div className={classes.gameInfo}>
@@ -66,7 +73,7 @@ const Game = () => {
 
 export default Game;
 
-//////////////////////////////////
+//--------------------------------------------------------------------------------/
 
 const checkWinner = (squares) => {
   const winningCondition = [
@@ -88,11 +95,15 @@ const checkWinner = (squares) => {
   return null;
 };
 
-const checkDraw = (squares) => {
-  for (let i = 0; i < squares.length; i++) {
-    if (squares[i] == null) {
-      return squares[i];
-    }
-  }
-  return null;
-};
+//--------------------------------------------------------------------------------/
+
+// Draw condition
+
+// const checkDraw = (squares) => {
+//   for (let i = 0; i < squares.length; i++) {
+//     if (squares[i] == null) {
+//       return squares[i];
+//     }
+//   }
+//   return null;
+// };
