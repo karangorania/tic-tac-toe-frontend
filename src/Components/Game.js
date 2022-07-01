@@ -28,7 +28,6 @@ const Game = () => {
   };
 
   const winner = checkWinner(history[currentIndex].board);
-  // const draw = checkDraw(history[currentIndex].board);
 
   // status will print what is the status of the game who is winner X or O
 
@@ -42,8 +41,22 @@ const Game = () => {
   // goBack function will help to goBack in Time Travel
 
   const goBack = (index) => {
-    setCurrentIndex(index);
+    if (setCurrentIndex(index)) {
+    } else {
+      return null;
+    }
   };
+
+  const moveStep = history.map((el, index) => {
+    const backTo = index ? 'Go to move #' + index : 'Go to game start';
+    return (
+      <li key={index}>
+        <button className={classes.active} onClick={() => goBack(index)}>
+          {backTo}
+        </button>
+      </li>
+    );
+  });
 
   return (
     <div className={classes.gameInfo}>
@@ -52,20 +65,7 @@ const Game = () => {
       </div>
       <div className={classes.gameInfo}>
         <div className={classes.status}>{status}</div>
-        <ol className={classes.time}>
-          {history.map((el, index) => {
-            return (
-              <li>
-                <button
-                  className={classes.active1}
-                  onClick={() => goBack(index)}
-                >
-                  Go to move #{index}
-                </button>
-              </li>
-            );
-          })}
-        </ol>
+        <ol className={classes.time}>{moveStep}</ol>
       </div>
     </div>
   );
@@ -94,16 +94,3 @@ const checkWinner = (squares) => {
   }
   return null;
 };
-
-//--------------------------------------------------------------------------------/
-
-// Draw condition
-
-// const checkDraw = (squares) => {
-//   for (let i = 0; i < squares.length; i++) {
-//     if (squares[i] == null) {
-//       return squares[i];
-//     }
-//   }
-//   return null;
-// };
